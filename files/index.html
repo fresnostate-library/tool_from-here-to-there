@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Direction to Anywhere on Fresno State Campus from Henry Madden Library</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 80%;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 3px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 5px;
+      }
+	  #right-panel {
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+
+      #right-panel select, #right-panel input {
+        font-size: 15px;
+      }
+
+      #right-panel select {
+        width: 100%;
+      }
+
+      #right-panel i {
+        font-size: 12px;
+      }
+      #right-panel {
+        height: 20%;
+        float: bottom;
+        width: 100%;
+        overflow: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="floating-panel">
+    <select id="end">
+		<option value=""><b>From the library, I want go to:</b></option>
+		<option value="36.8137598956321|-119.746212959289">Agricultural Sciences (AG)</option>
+		<option value="36.8145329352018|-119.746588468551">Agriculture Mechanics (AGM)</option>
+		<option value="36.8154949290973|-119.746792316436">Agriculture Operations Center (AGOP)</option>
+		<option value="36.811137|-119.747321">Amphitheater</option>
+		<option value="36.8162024593022|-119.740226268768">Animal Science Pavilion (ASP)</option>
+		<option value="36.8108995813469|-119.750397205352">Aspen \/ Ponderosa Hall (APH)</option>
+		<option value="36.814587|-119.752033">Aquatics Center</option>
+		<option value="36.807357|-119.736526">Auxiliary Services</option>
+		<option value="36.8106032363699|-119.751758426427">Baker Hall (BH)</option>
+		<option value="36.8168305345053|-119.742393493652">Beef Cattle Unit</option>
+		<option value="36.8168391235322|-119.741877168416">Beef Finish Unit</option>
+		<option value="36.8134077305733|-119.755552411079">Beiden Field (BEID)</option>
+		<option value="36.8095896419803|-119.749962687492">Birch Hall (BIRH)</option>
+		<option value="36.8148421488438|-119.748012721538">Boiler Plant</option>
+		<option value="36.8150880157441|-119.753216207027">Margie Wright Diamond (SFTBL)</option>
+		<option value="36.8144105377901|-119.757991880178">Bulldog Stadium (BU)</option>
+		<option value="36.8155711580073|-119.742608070373">Calf Barn</option>
+		<option value="36.816397|-119.736858">CATI</option>
+		<option value="36.8150225228915|-119.748240709304">Chiller</option>
+		<option value="36.8151062678406|-119.736581146717">CIT Testing</option>
+		<option value="36.811755|-119.744356">Conley Art (CA)</option>
+		<option value="36.815666|-119.743607">Creamery (Dairy Processing Unit)</option>
+		<option value="36.8175648928224|-119.737643301486">Dairy Unit</option>
+		<option value="36.8146746582761|-119.741596877574">DOJ Forensics Lab</option>
+		<option value="36.814552261091|-119.744319319725">Downing Planetarium (DP)</option>
+		<option value="36.8128096904661|-119.756776839494">Duncan Athletic (DUNC)</option>
+		<option value="36.809730|-119.747107">Education (ED)</option>
+		<option value="36.8131908476273|-119.750118255615">Education Annex (EDAX)</option>
+		<option value="36.8144577789195|-119.747975170612">Engineering East (EE)</option> 
+		<option value="36.814380475238|-119.749630093574">Engineering West (EW)</option>
+		<option value="36.8162765402353|-119.74642753601">Enology Unit (ENL)</option>
+		<option value="36.8130319429006|-119.750367701053">Family and Food Science (FFS)</option>
+		<option value="36.8150590271113|-119.746229052543">Farm Machinery Center (FMC)</option>
+		<option value="36.813844|-119.735653">Farm Market</option> 
+		<option value="36.815555|-119.743337">Food Processing Unit</option>
+		<option value="36.8069460731376|-119.735907912254">Foundation</option>
+		<option value="36.8161090528062|-119.737758636474">Graduate Lab</option>
+		<option value="36.810105030635|-119.751778542995">Graves Hall (GH)</option>
+		<option value="36.8155142547436|-119.744574129581">Greenhouses</option>
+		<option value="36.8151642450593|-119.749721288681">Grosse Industrial Technology (IT)</option>
+		<option value="36.8092825545908|-119.751800000667">Homan Hall (HH)</option>
+		<option value="36.8107900626847|-119.751365482807">Home Management (HMH)</option>
+		<option value="36.8162872765965|-119.743359088897">Horse Unit</option>
+		<option value="36.815583|-119.740306">Jordan Research Center</option>
+		<option value="36.8109811833855|-119.744559377431">Joyal Administration (JAD)</option>
+		<option value="36.8166673428114|-119.740636646747">Judging Pavilion</option>
+		<option value="36.8117349244195|-119.747696220874">Keats (KCB)</option>
+		<option value="36.812707|-119.747714">Kennel Bookstore (KB)</option>
+		<option value="36.809602526739|-119.74795371294">Lab School (LS)</option>
+		<option value="36.8155979991547|-119.741661250591">Mail Services/Printing</option>
+		<option value="36.8136707808466|-119.749225080013">McKee Fisk (MCF)</option>
+		<option value="36.8133175417001|-119.747822284698">McLane Hall (MCL)</option>
+		<option value="36.8108566328706|-119.746288061141">Music (M)</option>
+		<option value="36.8140347550402|-119.751722216606">North Gym Annex</option>
+		<option value="36.8134549723216|-119.751582741737">North Gym (NG)</option>
+		<option value="36.8197851028927|-119.731820225715">Orchard Field House</option>
+		<option value="36.8162937184124|-119.734585583209">Ornamental Horticulture Unit (HORT)</option>
+		<option value="36.8126647428785|-119.743300080299">Peters Business (PB)</option>
+		<option value="36.8148464434689|-119.744201302528">Planetarium Museum</option>
+		<option value="36.8150783528677|-119.74751651287">Plant Operations</option>
+		<option value="36.8154949290973|-119.748181700706">Police/Public Safety (PS)</option>
+		<option value="36.8192547490887|-119.739082306623">Poultry Unit</option>
+		<option value="36.813428|-119.751263">Professional/Human Services (PHS)</option>
+		<option value="36.814132|-119.752274">Physical Therapy and Intercollegiate Athletics Building</option>
+		<option value="36.816220711133|-119.747037738561">Raisin Lab</option>
+		<option value="36.815622693002|-119.744001477956">Recycling Center</option>
+		<option value="36.8125820689464|-119.755985587835">Ricchutti Center</option>
+		<option value="36.8128848483664|-119.739986211061">Rodeo Grounds</option>
+		<option value="36.815644|-119.743990">Round-up Laboratory Unit</option>
+		<option value="36.8133937727785|-119.745236635208">Satellite Student Union (SSU)</option>
+		<option value="36.810151|-119.739262">Save Mart Center (SMC)</option>
+		<option value="36.8135430136839|-119.743985384702">Science (S)</option>
+		<option value="36.8146553324178|-119.743561595678">Science II (S2)</option>
+		<option value="36.8091644437284|-119.750665426254">Sequoia/Cedar Hall (SCH)</option>
+		<option value="36.8154884872141|-119.738807380199">Sheep Unit</option>
+		<option value="36.8155958518633|-119.741334021091">Shipping and Receiving</option>
+		<option value="36.8099632991008|-119.742919206619">Smittcamp Alumni House (SAH)</option>
+		<option value="36.8138511576544|-119.750464260578">Social Science (SS)</option>
+		<option value="36.8125337529707|-119.751389622688">South Gym (SG)</option>
+		<option value="36.8116866079092|-119.746888875961">Speech Arts (SA)</option>
+		<option value="36.80958105214|-119.749243855476">Student Health Center (HC)</option>
+		<option value="36.8137545272745|-119.740114957094">Student Horse Center (HRS)</option>
+		<option value="36.8095917894403|-119.739882946014">Student Recreation Center (STRC)</option>
+		<option value="36.8168155037059|-119.739628136157">Swine Unit</option>
+		<option value="36.8102370984193|-119.749970734119">Sycamore Hall (SH)</option>
+		<option value="36.8100760401153|-119.750654697418">The Atrium (RH)</option>
+		<option value="36.8161283782975|-119.754490256309">The Bulldog Shop</option>
+		<option value="36.812851|-119.746790">Thomas (TAD)</option>
+		<option value="36.812533|-119.743277">University Business Center (UBC)</option>
+		<option value="36.8119711380312|-119.748476743698">University Center (UC)</option>
+		<option value="36.8113977819114|-119.750955104827">University Dining Hall (RDF)</option>
+		<option value="36.8102070342283|-119.743864685297">University High School (UHS)</option>
+		<option value="36.8127012482227|-119.748409688472">University Student Union (USU)</option>
+		<option value="36.8164354382267|-119.7474360466">Viticulture and Enology Research Center</option>
+		<option value="36.8163366638384|-119.746770858764">Viticulture Enology East</option>
+		<option value="36.8136396443308|-119.753036499023">Warmerdam Field</option>
+		<option value="36.8155668634228|-119.736759513616">WET Lab</option>
+    </select>
+    </div>
+    <div id="map"></div>
+	<div id="right-panel"></div>
+	<script>
+		function initMap() {
+			var directionsService = new google.maps.DirectionsService;
+			var directionsDisplay = new google.maps.DirectionsRenderer({draggable: true});
+
+			var map = new google.maps.Map(document.getElementById('map'), {
+			  zoom: 16,
+			  center: {lat: 36.812795, lng: -119.746412}, 
+			  mapTypeId: google.maps.MapTypeId.HYBRID,
+			});
+			directionsDisplay.setMap(map);
+			directionsDisplay.setPanel(document.getElementById('right-panel'));
+			var control = document.getElementById('floating-panel');
+			control.style.display = 'block';
+			map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+
+			var theStart = new google.maps.LatLng(36.812167, -119.749166);
+
+			var onChangeHandler = function() {
+				var strLatLng = document.getElementById('end').value;
+				if (strLatLng != "") {
+					var theLat = Number(strLatLng.split("|")[0]);
+					var theLng = Number(strLatLng.split("|")[1]);
+					var theDest = new google.maps.LatLng(theLat, theLng);
+					calculateAndDisplayRoute(directionsService, directionsDisplay,theStart,theDest);
+				}
+			};
+			document.getElementById('end').addEventListener('change', onChangeHandler);
+			
+			google.maps.event.addListener(map, 'click', function (e) {
+                //alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+				theDest = e.latLng;
+				calculateAndDisplayRoute(directionsService, directionsDisplay,theStart,theDest);
+            });
+		}
+
+		function calculateAndDisplayRoute(directionsService, directionsDisplay,start,dest) {
+			directionsService.route({
+			  origin: start,
+			  destination: dest,
+			  travelMode: google.maps.TravelMode.WALKING
+			}, function(response, status) {
+			  if (status === google.maps.DirectionsStatus.OK) {
+				directionsDisplay.setDirections(response);
+			  } else {
+				window.alert('Directions request failed due to ' + status);
+			  }
+			});
+		}
+	
+	</script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0TCu8G4tYWEM1Ekl2hpAEc1_q9HGsEhc&callback=initMap">
+    </script>
+  </body>
+</html>
